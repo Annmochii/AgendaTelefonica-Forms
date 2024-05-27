@@ -30,7 +30,10 @@ namespace AgendaTelefonica
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-
+            listaContatos.Remove(selecionado);
+            dgvContatos.DataSource = null;
+            dgvContatos.DataSource = listaContatos;
+            dgvContatos.Refresh();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

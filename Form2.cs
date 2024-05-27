@@ -32,7 +32,15 @@ namespace AgendaTelefonica
                 txbNome.Text = contato.nome;
                 txbSobrenome.Text = contato.sobrenome;
                 txbTelefone.Text = contato.telefone;
-                cbxTipo.DisplayMember = contato.tipo.ToString();
+
+                foreach (TipoTelefone tipo in cbxTipo.Items)
+                {
+                    if (tipo.id == contato.tipo.id && tipo.nome == contato.tipo.nome)
+                    {
+                        cbxTipo.SelectedItem = tipo;
+                        break;
+                    }
+                }
             }
         }
 
@@ -51,7 +59,7 @@ namespace AgendaTelefonica
                 contato.telefone = txbTelefone.Text;
                 contato.tipo = (TipoTelefone)cbxTipo.SelectedItem;
 
-                origem.listaContatos[contato.id] = contato;
+                origem.listaContatos[contato.id - 1] = contato;
             }
 
 
